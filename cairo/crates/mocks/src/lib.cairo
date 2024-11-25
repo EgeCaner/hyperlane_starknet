@@ -19,3 +19,4 @@ pub mod test_ism;
 pub mod test_post_dispatch_hook;
 pub mod xerc20_lockbox_test;
 pub mod xerc20_test;
+pub mod mock_rate_limited;
