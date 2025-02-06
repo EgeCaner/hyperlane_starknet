@@ -42,16 +42,7 @@ pub mod TestPostDispatchHook {
         }
 
         fn post_dispatch(ref self: ContractState, metadata: Bytes, message: Message) {
-            let hash = keccak_u256s_le_inputs(
-                array![
-                    message.nonce.into(),
-                    message.origin.into(),
-                    message.sender,
-                    message.destination.into(),
-                    message.recipient
-                ]
-                    .span()
-            );
+            let (hash, _) = MessageTrait::format_message(message);
             self.message_dispatched.write(hash, true);
         }
 
